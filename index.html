@@ -446,14 +446,13 @@
       max-width: 100% !important;
       overflow-wrap: break-word !important;
       line-height: 1.5 !important;
+      position: relative !important;
     }
     .mapboxgl-ctrl-directions .mapbox-directions-step:last-child {
       border-bottom: none !important;
     }
     .mapboxgl-ctrl-directions .mapbox-directions-icon {
-      background: #f4f2f8 !important;
-      color: #8e24aa !important;
-      fill: #8e24aa !important;
+      display: none !important;
     }
     .mapboxgl-ctrl-directions .mapbox-directions-instructions {
       padding: 0 !important;
@@ -477,25 +476,16 @@
       color: #fff !important;
       font-weight: 700 !important;
     }
-    .mapboxgl-ctrl-directions .mapbox-directions-step-primary {
-      background: #f4f2f8 !important;
-      color: #222 !important;
-      font-weight: 600 !important;
-      word-break: break-word !important;
-      white-space: normal !important;
-      max-width: 100% !important;
-      overflow-wrap: break-word !important;
-      display: block !important;
-    }
+    .mapboxgl-ctrl-directions .mapbox-directions-step-primary,
     .mapboxgl-ctrl-directions .mapbox-directions-step-secondary {
       background: #f4f2f8 !important;
-      color: #555 !important;
-      font-weight: 400 !important;
+      padding-left: 0 !important;
+      padding-right: 32px !important;
+      display: block !important;
       word-break: break-word !important;
       white-space: normal !important;
       max-width: 100% !important;
       overflow-wrap: break-word !important;
-      display: block !important;
     }
   </style>
 </head>
@@ -667,21 +657,14 @@
         accessToken: mapboxgl.accessToken,
         unit: 'metric',
         profile: 'mapbox/walking',
-        interactive: false,
-        controls: { inputs: false, instructions: true }
+        interactive: true,
+        controls: { profileSwitcher: true }
       });
       map.addControl(directionsControl, 'top-left');
       directionsControl.setOrigin(userCoords);
       directionsControl.setDestination([locations[idx].lng, locations[idx].lat]);
       document.getElementById('directions').classList.add('active');
       document.getElementById('directions').innerHTML = `<strong>Directions to ${locations[idx].name}:</strong>`;
-      setTimeout(() => {
-        const dirPanel = document.querySelector('.mapboxgl-ctrl-directions');
-        if (dirPanel) dirPanel.style.background = '#fff';
-        if (dirPanel) dirPanel.style.borderRadius = '0';
-        if (dirPanel) dirPanel.style.boxShadow = 'none';
-        if (dirPanel) dirPanel.style.border = '1px solid #e0e0e0';
-      }, 300);
     };
 
     // Modal logic
