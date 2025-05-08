@@ -338,6 +338,12 @@
         bottom: 10px;
       }
     }
+    @media (min-width: 700px) {
+      .mapboxgl-ctrl-directions {
+        width: 440px !important;
+        max-width: 440px !important;
+      }
+    }
     .mapboxgl-popup-content {
       font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif;
       border: 1px solid #e0e0e0;
@@ -406,6 +412,91 @@
     .location-card p, .mapboxgl-popup-content p, .modal-content ul, .main-desc {
       font-weight: 600;
     }
+    .mapboxgl-ctrl-directions {
+      background: #f4f2f8 !important;
+      border: 1px solid #e0e0e0 !important;
+      border-radius: 0 !important;
+      box-shadow: 0 2px 12px rgba(142,36,170,0.10) !important;
+      font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif !important;
+      color: #222 !important;
+      font-size: 0.97rem !important;
+      max-width: 340px !important;
+      min-width: 220px !important;
+      padding: 8px 8px 4px 8px !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-route-summary {
+      background: #8e24aa !important;
+      color: #fff !important;
+      font-weight: 700 !important;
+      border-radius: 0 !important;
+      padding: 8px 12px !important;
+      font-size: 1.05rem !important;
+      border-bottom: 1px solid #e0e0e0 !important;
+      letter-spacing: 0.5px !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-step {
+      background: #f4f2f8 !important;
+      color: #222 !important;
+      border-bottom: 1px solid #e0e0e0 !important;
+      padding: 10px 6px 10px 6px !important;
+      font-size: 1rem !important;
+      margin: 0 !important;
+      word-break: break-word !important;
+      white-space: normal !important;
+      max-width: 100% !important;
+      overflow-wrap: break-word !important;
+      line-height: 1.5 !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-step:last-child {
+      border-bottom: none !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-icon {
+      background: #f4f2f8 !important;
+      color: #8e24aa !important;
+      fill: #8e24aa !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-instructions {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-step-distance {
+      color: #8e24aa !important;
+      font-weight: 600 !important;
+      font-size: 0.93rem !important;
+      margin-top: 2px !important;
+      display: block !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-step-maneuver {
+      margin-right: 8px !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-steps {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-route-summary span {
+      color: #fff !important;
+      font-weight: 700 !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-step-primary {
+      background: #f4f2f8 !important;
+      color: #222 !important;
+      font-weight: 600 !important;
+      word-break: break-word !important;
+      white-space: normal !important;
+      max-width: 100% !important;
+      overflow-wrap: break-word !important;
+      display: block !important;
+    }
+    .mapboxgl-ctrl-directions .mapbox-directions-step-secondary {
+      background: #f4f2f8 !important;
+      color: #555 !important;
+      font-weight: 400 !important;
+      word-break: break-word !important;
+      white-space: normal !important;
+      max-width: 100% !important;
+      overflow-wrap: break-word !important;
+      display: block !important;
+    }
   </style>
 </head>
 <body>
@@ -454,12 +545,44 @@
     let userCoords = null;
     let directionsControl = null;
 
+    function setUserLocationMarker(coords) {
+      userCoords = coords;
+      if (userMarker) userMarker.remove();
+      userMarker = new mapboxgl.Marker({ color: '#8e24aa' })
+        .setLngLat(userCoords)
+        .setPopup(new mapboxgl.Popup().setText('Your Location'))
+        .addTo(map);
+      map.flyTo({ center: userCoords, zoom: 15 });
+    }
+
+    function requestUserLocation(auto = false) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            setUserLocationMarker([position.coords.longitude, position.coords.latitude]);
+          },
+          function(error) {
+            if (!auto) {
+              alert('Unable to retrieve your location.');
+            }
+            // If auto, fail silently
+          }
+        );
+      } else {
+        if (!auto) {
+          alert('Geolocation is not supported by your browser.');
+        }
+      }
+    }
+
     fetch('locations.json')
       .then(response => response.json())
       .then(data => {
         locations = data;
         initMap();
         renderLocationList();
+        // Automatically request location on page load
+        requestUserLocation(true);
       });
 
     function initMap() {
@@ -531,21 +654,7 @@
     }
 
     document.getElementById('locate-btn').onclick = function() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          userCoords = [position.coords.longitude, position.coords.latitude];
-          if (userMarker) userMarker.remove();
-          userMarker = new mapboxgl.Marker({ color: '#8e24aa' })
-            .setLngLat(userCoords)
-            .setPopup(new mapboxgl.Popup().setText('Your Location'))
-            .addTo(map);
-          map.flyTo({ center: userCoords, zoom: 15 });
-        }, function() {
-          alert('Unable to retrieve your location.');
-        });
-      } else {
-        alert('Geolocation is not supported by your browser.');
-      }
+      requestUserLocation(false);
     };
 
     window.showDirections = function(idx) {

@@ -24,3 +24,5 @@ Changed all headers and titles from "San Ignacio" to "San Ygnacio" in index.html
 ## 2024-06-10
 - Updated locations.json with highly precise coordinates for Trevino-Uribe Fort, Second Marker, and San Ygnacio Plaza to ensure accurate marker placement on the map. 
 - Enhanced the intro section in index.html to include information about local and regional art installations and THE RIVER PIERCE FOUNDATION's mission. Updated the .main-desc HTML with new descriptive text and a foundation link, ensuring compatibility with both mobile and desktop layouts. 
+
+- Feature: Automatically requests geolocation permission on page load. If granted, the user's location is shown on the map. If denied or unavailable, the user can still use the location button as a fallback. Robust error handling is included, and all existing logic is preserved.
