@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Estok'Gna Burial Site ",
+    "description": "A historical site with an immersive AR experience.",
+    "address": "399-301 Trevino St, San Ygnacio, Texas 78067",
+    "lat": 27.04471266448574,
+    "lng": -99.44384631296877,
+    "ar_link": "https://adobeaero.app.link/dy8PBznG8Sb"
+  },
+  {
+    "name": "Trevino-Uribe Fort Marker",
+    "description": "Another important historical marker with AR content.",
+    "address": "300-398 Trevino St, San Ygnacio, Texas 78067",
+    "lat": 27.045204475337957,
+    "lng": -99.44357657173731,
+    "ar_link": "https://adobeaero.app.link/example2"
+  },
+  {
+    "name": "Trevino-Uribe Fort",
+    "description": "A National Historic Landmark, the Trevino-Uribe Fort is one of the oldest and best-preserved Spanish Colonial structures in Texas.",
+    "address": "604 Trevino St, San Ygnacio, Texas 78067",
+    "lat": 27.045220456988748,
+    "lng": -99.44387911352833,
+    "ar_link": null
+  },
+  {
+    "name": "San Ygnacio Plaza",
+    "description": "The historic plaza at the heart of San Ygnacio, surrounded by 19th-century stone buildings and local art installations.",
+    "address": "Plaza St & Trevino St, San Ygnacio, Texas 78067",
+    "lat": 27.04421518139519,
+    "lng": -99.44172551478606,
+    "ar_link": null
+  }
+] 
+
