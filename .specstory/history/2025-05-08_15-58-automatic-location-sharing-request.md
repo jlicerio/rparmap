@@ -611,6 +611,313 @@ run local server
 
 _**Assistant**_
 
+```bash
+npm start
+```
+
+```
+PS C:\Users\juanc\OneDrive\Desktop\rgvxrmap> npm start
+
+> rgvxrmap@1.0.0 start
+> node server.js
+
+Server running on port 3000
+```
+
+---
+
+The local server is now running on port 3000. You can access your project by navigating to http://localhost:3000 in your web browser. If you need to stop the server or run any other commands, let me know.
+
+---
+
+_**User**_
+
+ok issues with guide text overlap 
+
+---
+
+_**Assistant**_
+
+```diff
+        font-size: 0.97rem !important;
+        margin: 0 !important;
++       word-break: break-word !important;
++       white-space: normal !important;
++       max-width: 100% !important;
++       overflow-wrap: break-word !important;
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-step:last-child {
+```
+
+```diff
+        font-weight: 700 !important;
+      }
+-     .mapboxgl-ctrl-directions .mapbox-directions-step-primary {
+-       color: #181818 !important;
+-       font-weight: 600 !important;
+-     }
++     .mapboxgl-ctrl-directions .mapbox-directions-step-primary,
+      .mapboxgl-ctrl-directions .mapbox-directions-step-secondary {
+-       color: #555 !important;
+-       font-weight: 400 !important;
++       word-break: break-word !important;
++       white-space: normal !important;
++       max-width: 100% !important;
++       overflow-wrap: break-word !important;
++       display: block !important;
+      }
+    </style>
+```
+
+---
+
+Guide step text overlap is now fixed. Long directions in the Mapbox Directions panel will wrap and no longer overflow, ensuring all instructions remain readable and visually clean. If you need further adjustments, let me know.
+
+---
+
+_**User**_
+
+ looks the same
+
+---
+
+_**Assistant**_
+
+The text wrapping fix is in place, but the panel width is still narrow, causing the text to wrap too aggressively and making the panel look cramped. To improve readability and appearance, the directions panel should be wider on desktop screens.
+
+**Next steps:**
+- Increase the `.mapboxgl-ctrl-directions` max-width and width on larger screens (e.g., 400–480px).
+- Add a media query so the panel remains compact on mobile but is more readable on desktop.
+
+I will update the styles accordingly.
+
+---
+
+```diff
+        }
+      }
++     @media (min-width: 700px) {
++       .mapboxgl-ctrl-directions {
++         width: 440px !important;
++         max-width: 440px !important;
++       }
++     }
+      .mapboxgl-popup-content {
+        font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif;
+```
+
+---
+
+The Mapbox Directions panel will now appear wider (440px) on desktop screens, improving readability and reducing excessive text wrapping. On mobile, it remains compact. This should resolve the cramped appearance and make the guide steps much easier to read. Let me know if you want further adjustments.
+
+---
+
+_**User**_
+
+compare original with curent white one it isnt looking good
+
+---
+
+_**Assistant**_
+
+Your feedback is clear: the current white-themed directions panel, while matching your site’s palette, has lost the visual clarity and separation that the original dark Mapbox style provided. The original (dark) panel had:
+- Strong contrast for text and icons
+- Clear separation between steps
+- A visually distinct header
+
+The current (white) version, while on-brand, is harder to read and lacks the strong visual hierarchy.
+
+**Recommended improvements:**
+- Use a light gray or very pale purple background for the panel (not pure white).
+- Add a subtle border or shadow for separation from the map.
+- Make the header bar a solid purple (#8e24aa) with white text for strong contrast.
+- Use a slightly darker text color for step instructions.
+- Add more vertical spacing between steps for clarity.
+- Keep icons purple for brand consistency.
+
+Would you like to proceed with these adjustments for a more visually balanced and readable panel, blending the best of both styles? If yes, I’ll update the styles accordingly.
+
+---
+
+_**User**_
+
+please fix if needed revert
+
+---
+
+_**Assistant**_
+
+```diff
+      }
+      .mapboxgl-ctrl-directions {
+-       background: #fff !important;
++       background: #f4f2f8 !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 0 !important;
+-       box-shadow: none !important;
++       box-shadow: 0 2px 12px rgba(142,36,170,0.10) !important;
+        font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif !important;
+-       color: #181818 !important;
++       color: #222 !important;
+        font-size: 0.97rem !important;
+        max-width: 340px !important;
+```
+
+```diff
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-route-summary {
+-       background: #f7f7f7 !important;
+-       color: #8e24aa !important;
++       background: #8e24aa !important;
++       color: #fff !important;
+        font-weight: 700 !important;
+        border-radius: 0 !important;
+-       padding: 6px 8px !important;
+-       font-size: 1.01rem !important;
++       padding: 8px 12px !important;
++       font-size: 1.05rem !important;
++       border-bottom: 1px solid #e0e0e0 !important;
++       letter-spacing: 0.5px !important;
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-step {
+-       background: #fff !important;
+-       color: #181818 !important;
++       background: transparent !important;
++       color: #222 !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+-       padding: 4px 6px !important;
+-       font-size: 0.97rem !important;
++       padding: 10px 6px 10px 6px !important;
++       font-size: 1rem !important;
+        margin: 0 !important;
+        word-break: break-word !important;
+        white-space: normal !important;
+        max-width: 100% !important;
+        overflow-wrap: break-word !important;
++       line-height: 1.5 !important;
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-step:last-child {
+```
+
+```diff
+        font-weight: 600 !important;
+        font-size: 0.93rem !important;
++       margin-top: 2px !important;
++       display: block !important;
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-step-maneuver {
+-       margin-right: 6px !important;
++       margin-right: 8px !important;
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-steps {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+-     .mapboxgl-ctrl-directions .mapbox-directions-route-summary {
+-       border-bottom: 1px solid #e0e0e0 !important;
+-     }
+      .mapboxgl-ctrl-directions .mapbox-directions-route-summary span {
+-       color: #8e24aa !important;
++       color: #fff !important;
+        font-weight: 700 !important;
+      }
+-     .mapboxgl-ctrl-directions .mapbox-directions-step-primary,
++     .mapboxgl-ctrl-directions .mapbox-directions-step-primary {
++       color: #222 !important;
++       font-weight: 600 !important;
++       word-break: break-word !important;
++       white-space: normal !important;
++       max-width: 100% !important;
++       overflow-wrap: break-word !important;
++       display: block !important;
++     }
+      .mapboxgl-ctrl-directions .mapbox-directions-step-secondary {
++       color: #555 !important;
++       font-weight: 400 !important;
+        word-break: break-word !important;
+        white-space: normal !important;
+```
+
+---
+
+The Mapbox Directions panel now features a light gray background, a bold purple header with white text, improved text contrast, and more vertical spacing for clarity. This restores visual hierarchy and readability while keeping your brand style. If you want further tweaks or a full revert to the original dark style, let me know.
+
+---
+
+_**User**_
+
+looking better but still in dark mode in some areas 
+
+---
+
+_**Assistant**_
+
+```diff
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-step {
+-       background: transparent !important;
++       background: #f4f2f8 !important;
+        color: #222 !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+```
+
+```diff
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-icon {
++       background: #f4f2f8 !important;
+        color: #8e24aa !important;
+        fill: #8e24aa !important;
+```
+
+```diff
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-step-primary {
++       background: #f4f2f8 !important;
+        color: #222 !important;
+        font-weight: 600 !important;
+```
+
+```diff
+      }
+      .mapboxgl-ctrl-directions .mapbox-directions-step-secondary {
++       background: #f4f2f8 !important;
+        color: #555 !important;
+        font-weight: 400 !important;
+```
+
+---
+
+All remaining dark mode areas in the Mapbox Directions panel are now fixed. Every step, icon, and text area uses a light background and dark text for full consistency with your theme. The panel should now appear fully light and visually integrated with your site. Let me know if you need any further refinements.
+
+---
+
+_**User**_
+
+there we go git commit
+
+---
+
+_**Assistant**_
+
+```bash
+git add index.html && git commit -m "style: fix all Mapbox Directions panel dark mode remnants for full light theme integration"
+```
+
+```
+PS C:\Users\juanc\OneDrive\Desktop\rgvxrmap> git add index.html && git commit -m "style: fix all Mapbox Directions panel dark mode remnan
+ts for full light theme integration"
+At line:1 char:20
++ git add index.html && git commit -m "style: fix all Mapbox Directions ...
++                    ~~
+The token '&&' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordEx 
+   ception
+    + FullyQualifiedErrorId : InvalidEndOfLine
+PS C:\Users\juanc\OneDrive\Desktop\rgvxrmap>
+```
+
+---
+
 
 
 ---
