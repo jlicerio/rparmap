@@ -337,6 +337,7 @@
         right: 10px;
         bottom: 10px;
       }
+      .about-mobile-link { display: block; }
     }
     @media (min-width: 700px) {
       .mapboxgl-ctrl-directions {
@@ -523,6 +524,22 @@
       .logos-row img, .qr-placeholder { max-width: 80px; max-height: 40px; }
       .qr-placeholder { width: 80px; height: 80px; font-size: 0.95rem; }
     }
+    .about-mobile-link {
+      display: none;
+      position: fixed;
+      top: 8px;
+      right: 12px;
+      z-index: 2001;
+      background: #fff;
+      color: #8e24aa;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(142,36,170,0.08);
+    }
   </style>
 </head>
 <body>
@@ -534,6 +551,7 @@
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/><rect x="9" y="7" width="2" height="6" rx="1" fill="currentColor"/><rect x="9" y="5" width="2" height="2" rx="1" fill="currentColor"/></svg>
     </button>
   </header>
+  <a href="about.html" class="about-mobile-link">About</a>
   <div class="cross-hero">
     <img src="img/cross.avif" alt="Purple Cross" class="cross-img" />
     <div class="main-title">San Ygnacio Augmented Reality Map</div>
