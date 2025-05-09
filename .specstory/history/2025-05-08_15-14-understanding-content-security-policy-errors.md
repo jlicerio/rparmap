@@ -1493,6 +1493,62 @@ upload new git
 
 _**Assistant**_
 
+```bash
+git add .
+```
+
+```
+PS C:\Users\juanc\OneDrive\Desktop\rgvxrmap> git add .
+warning: in the working copy of '.specstory/history/2025-05-08_15-14-understandi
+ng-content-security-policy-e
+rrors.md', LF will be replaced by CRLF the next time Git touches it
+                            
+```
+
+---
+
+```bash
+git commit -m "Upload new changes to GitHub repository"
+```
+
+```
+PS C:\Users\juanc\OneDrive\Desktop\rgvxrmap> git commit -m "Upload new changes to GitHub repository"
+ 2 files changed, 166 insertions(+), 1 deletion(-)
+PS C:\Users\juanc\OneDrive\Desktop\rgvxrmap>
+
+```
+
+---
+
+```bash
+git push origin main
+```
+
+```
+PS C:\Users\juanc\OneDrive\Desktop\rgvxrmap> git push origin main
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Total 6 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+To https://github.com/jlicerio/rparmap.git
+   436b477..9c321a1  main -> main
+PS C:\Users\juanc\OneDrive\Desktop\rgvxrmap>
+```
+
+---
+
+All new changes have been committed and pushed to your GitHub repository. Your project is fully synchronized with the remote repository.
+
+---
+
+_**User**_
+
+update git
+
+---
+
+_**Assistant**_
+
 
 
 ---
