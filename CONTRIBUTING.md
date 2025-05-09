@@ -44,4 +44,23 @@ Thank you for your interest in contributing! Please follow these steps to make a
 - Ensure your code is modular, well-documented, and tested.
 - Do not include unrelated changes in your pull request.
 
+## Committing and Pushing Changes
+
+To commit and push your changes to your fork or branch, follow these steps:
+
+1. Stage all your changes:
+   ```sh
+   git add .
+   ```
+2. Commit your changes with a descriptive message:
+   ```sh
+   git commit -m "Describe your changes"
+   ```
+3. Push your changes to your fork or branch:
+   ```sh
+   git push origin your-feature-branch
+   ```
+
+Replace `your-feature-branch` with the name of your branch. This will update your fork or branch on GitHub with your latest changes.
+
 Thank you for contributing! 
