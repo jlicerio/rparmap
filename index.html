@@ -150,7 +150,7 @@
       background: #fff;
       color: #181818;
       border: 1px solid #e0e0e0;
-      border-radius: 0;
+      border-radius: 8px;
       width: 48px;
       height: 48px;
       font-size: 1.3rem;
@@ -173,7 +173,7 @@
     }
     .location-card {
       background: #fff;
-      border-radius: 0;
+      border-radius: 8px;
       border: 1px solid #e0e0e0;
       box-shadow: none;
       padding: 18px 18px 12px 18px;
@@ -200,7 +200,7 @@
       color: #181818;
       padding: 7px 16px;
       border: 1px solid #e0e0e0;
-      border-radius: 0;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 0.98rem;
       transition: background 0.2s, color 0.2s;
@@ -219,7 +219,7 @@
       max-width: 520px;
       margin: 0 auto 32px auto;
       background: #fff;
-      border-radius: 0;
+      border-radius: 8px;
       border: 1px solid #e0e0e0;
       padding: 16px 16px 10px 16px;
       color: #181818;
@@ -348,7 +348,7 @@
       font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif;
       border: 1px solid #e0e0e0;
       box-shadow: 0 2px 12px rgba(142,36,170,0.08);
-      border-radius: 0;
+      border-radius: 8px;
       padding: 18px 18px 12px 18px;
     }
     .mapboxgl-popup-content h3 {
@@ -487,6 +487,42 @@
       max-width: 100% !important;
       overflow-wrap: break-word !important;
     }
+    .main-content {
+      max-width: 700px;
+      margin: 80px auto 0 auto;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 36px 32px 32px 32px;
+      box-shadow: 0 2px 12px rgba(142,36,170,0.08);
+    }
+    .logos-row img {
+      max-height: 60px;
+      max-width: 160px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      padding: 6px 12px;
+    }
+    .qr-placeholder {
+      width: 120px;
+      height: 120px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 1.1rem;
+      border: 1.5px dashed #bbb;
+      border-radius: 8px;
+      margin: 0 18px;
+    }
+    @media (max-width: 700px) {
+      .main-content { padding: 18px 6px 16px 6px; }
+      .logos-row img, .qr-placeholder { max-width: 80px; max-height: 40px; }
+      .qr-placeholder { width: 80px; height: 80px; font-size: 0.95rem; }
+    }
   </style>
 </head>
 <body>
@@ -494,7 +530,9 @@
     <img src="img/rp.png" alt="River Pierce Foundation Logo" class="rp-logo" />
     <h1>San Ygnacio Augmented Reality Map</h1>
     <span class="subtitle">Brought to you by <a href="https://www.riverpierce.org/" class="footer-link" target="_blank" rel="noopener">THE RIVER PIERCE FOUNDATION</a></span>
-    <button class="info-btn" id="open-instructions" title="About" aria-label="About"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/><rect x="9" y="7" width="2" height="6" rx="1" fill="currentColor"/><rect x="9" y="5" width="2" height="2" rx="1" fill="currentColor"/></svg></button>
+    <button class="info-btn" id="open-instructions" title="About" aria-label="About" onclick="window.open('about.html', '_blank')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/><rect x="9" y="7" width="2" height="6" rx="1" fill="currentColor"/><rect x="9" y="5" width="2" height="2" rx="1" fill="currentColor"/></svg>
+    </button>
   </header>
   <div class="cross-hero">
     <img src="img/cross.avif" alt="Purple Cross" class="cross-img" />
@@ -669,9 +707,6 @@
 
     // Modal logic
     const modal = document.getElementById('instructions-modal');
-    document.getElementById('open-instructions').onclick = () => {
-      modal.classList.add('active');
-    };
     document.getElementById('close-instructions').onclick = () => {
       modal.classList.remove('active');
     };

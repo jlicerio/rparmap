@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Map and Augmented Reality Project by Juan Carlo Licerio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', Times, serif;
+      font-weight: 600;
+      background: #f7f7f7;
+      color: #181818;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+    }
+    .rp-logo {
+      height: 38px;
+      width: auto;
+      margin-right: 16px;
+      margin-top: 2px;
+    }
+    header h1 {
+      font-size: 1.3rem;
+      margin: 0;
+      flex: 1;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #8e24aa;
+    }
+    .main-content {
+      max-width: 700px;
+      margin: 80px auto 0 auto;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 0;
+      padding: 36px 32px 32px 32px;
+      box-shadow: 0 2px 12px rgba(142,36,170,0.08);
+    }
+    .main-title {
+      color: #8e24aa;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.2em;
+      text-align: center;
+    }
+    .main-desc {
+      color: #222;
+      font-size: 1.08rem;
+      text-align: left;
+      margin-bottom: 1.2em;
+      font-weight: 600;
+    }
+    .logos-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+      margin-bottom: 12px;
+    }
+    .logos-row img {
+      max-height: 60px;
+      max-width: 160px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 4px;
+      border: 1px solid #e0e0e0;
+      padding: 6px 12px;
+    }
+    .logos-row img.rp-large {
+      max-height: 100px;
+      max-width: 220px;
+      padding: 10px 18px;
+    }
+    .qr-placeholder {
+      width: 120px;
+      height: 120px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 1.1rem;
+      border: 1.5px dashed #bbb;
+      border-radius: 8px;
+      margin: 0 18px;
+    }
+    @media (max-width: 700px) {
+      .main-content { padding: 18px 6px 16px 6px; }
+      .logos-row img, .qr-placeholder { max-width: 80px; max-height: 40px; }
+      .qr-placeholder { width: 80px; height: 80px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <img src="img/fort san ygnacio.PNG" alt="Fort San Ygnacio" style="width:100%;max-width:700px;display:block;margin:0 auto 28px auto;border-radius:8px;border:1px solid #e0e0e0;box-shadow:0 2px 12px rgba(142,36,170,0.08);" />
+    <div class="main-title">Virtual Map and Augmented Reality Project by Juan Carlo Licerio</div>
+    <div class="main-desc">
+      The San Ygnacio Online Virtual Map invites the public to explore the history of San Ygnacio by engaging with historical sites through commissioned artworks and cutting-edge technology, including immersive Augmented Reality experiences. Artist Juan Carlo Licerio was commissioned by the River Pierce Foundation to create an Augmented Reality memorial for an ancient Carrizo/Comecrudo burial site in San Ygnacio, which can be located and viewed using the QR code below. The project has since expanded to include additional designers at the Trevino-Uribe Fort. Licerio's website and augmented reality designs are living artworks that will seek input from the community and be continually updated with additional references to San Ygnacio's unique history.
+    </div>
+    <div class="logos-row">
+      <img src="img/rp long.png" class="rp-large" />
+      <a href="index.html" style="text-decoration:none;">
+        <div class="qr-placeholder">QR Code for Map</div>
+      </a>
+      <img src="img/Mellon_Foundation_logo_2022.svg.png" alt="Mellon Foundation Logo" />
+    </div>
+  </div>
+</body>
+</html> 
