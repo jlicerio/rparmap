@@ -66,6 +66,8 @@
       align-items: center;
       margin-top: 48px;
       margin-bottom: 12px;
+      gap: 32px;
+      flex-wrap: wrap;
     }
     .logos-row img {
       max-height: 60px;
@@ -75,6 +77,8 @@
       border-radius: 4px;
       border: 1px solid #e0e0e0;
       padding: 6px 12px;
+      flex: 1 1 120px;
+      min-width: 0;
     }
     .logos-row img.rp-large {
       max-height: 100px;
@@ -96,7 +100,13 @@
     }
     @media (max-width: 700px) {
       .main-content { padding: 18px 6px 16px 6px; }
-      .logos-row img, .qr-placeholder { max-width: 80px; max-height: 40px; }
+      .logos-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+      }
+      .logos-row img, .qr-placeholder { max-width: 100%; max-height: 48px; }
+      .logos-row img.rp-large { max-width: 100%; max-height: 70px; }
       .qr-placeholder { width: 80px; height: 80px; font-size: 0.95rem; }
     }
   </style>
